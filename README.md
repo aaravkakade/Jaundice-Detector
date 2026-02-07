@@ -56,17 +56,53 @@ This project aims to build a machine learning model that can detect jaundice (ye
    # Edit .env with your configuration
    ```
 
-5. **Prepare data**
-   - Place raw dataset in `data/raw/`
-   - Run preprocessing scripts to generate `data/processed/`
+5. **Prepare and train the model**
+   ```bash
+   # Step 1: Manually place images in data/raw/ organized by class
+   # Structure should be:
+   #   data/raw/jaundice/  (images showing jaundice)
+   #   data/raw/normal/     (images without jaundice)
+   
+   # Step 2: Split data into train/val/test sets
+   python scripts/split_data.py
+   
+   # Step 3: Train the model
+   python -m src.training.train
+   # Or use the script:
+   # ./scripts/train_local.sh
+   ```
+
+## Quick Start Workflow
+
+1. **Place your images manually** in `data/raw/`:
+   ```
+   data/raw/
+   ├── jaundice/
+   │   ├── image1.jpg
+   │   ├── image2.jpg
+   │   └── ...
+   └── normal/
+       ├── image1.jpg
+       ├── image2.jpg
+       └── ...
+   ```
+
+2. **Split the data**:
+   ```bash
+   python scripts/split_data.py
+   ```
+
+3. **Train the model**:
+   ```bash
+   python -m src.training.train
+   ```
+
+4. **Check results**: Trained models are saved in `models/` directory
 
 ## Next Steps Checklist
 
-- [ ] Obtain/download jaundice detection dataset
-- [ ] Implement data preprocessing pipeline (`src/data/`)
-- [ ] Define model architecture (`src/training/`)
-- [ ] Implement training script with PyTorch
-- [ ] Train model and save checkpoints
+- [x] Data preprocessing pipeline (`src/data/`)
+- [x] Model architecture and training (`src/training/`)
 - [ ] Implement inference utilities (`src/inference/`)
 - [ ] Build Streamlit UI (`app/app.py`)
 - [ ] Test end-to-end workflow
@@ -79,11 +115,19 @@ Once implemented, run the Streamlit app:
 streamlit run app/app.py
 ```
 
+## Configuration
+
+Edit `src/config.py` to customize:
+- Training hyperparameters (batch size, learning rate, epochs)
+- Model architecture (resnet18, resnet34, resnet50)
+- Data split ratios
+- Early stopping patience
+
 ## Development
 
-- Configuration: Edit `src/config.py` for paths and constants
-- Training: Use `scripts/train_local.sh` or run training scripts directly
-- Testing: Add tests in `tests/` directory
+- **Training**: Use `python -m src.training.train` or `./scripts/train_local.sh`
+- **Data splitting**: Run `python scripts/split_data.py` after placing images
+- **Testing**: Add tests in `tests/` directory
 
 ## License
 
