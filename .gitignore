@@ -61,12 +61,15 @@ data/processed/**
 !data/processed/.gitkeep
 
 # Model files (large files, commit selectively)
-models/*.pth
+# Allow best_model.pth and .gitkeep to be tracked
+!models/best_model.pth
+!models/.gitkeep
+# Ignore other model files
+models/checkpoint_*.pth
 models/*.pt
 models/*.ckpt
 models/*.h5
 models/*.pkl
-!models/.gitkeep
 
 # Logs
 *.log

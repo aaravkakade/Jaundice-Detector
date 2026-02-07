@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 
 # Base directory
-BASE_DIR = Path(__file__).parent.parent.parent
+BASE_DIR = Path(__file__).parent.parent
 
 # Data paths
 DATA_RAW_DIR = BASE_DIR / "data" / "raw"
@@ -17,7 +17,7 @@ MODELS_DIR = BASE_DIR / "models"
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
 NUM_EPOCHS = 50
-NUM_WORKERS = 4  # For DataLoader
+NUM_WORKERS = 0  # For DataLoader (0 = single-threaded, safer for some systems)
 
 # Data split ratios
 TRAIN_RATIO = 0.7

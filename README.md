@@ -33,13 +33,13 @@ This project aims to build a machine learning model that can detect jaundice (ye
 
 ## Setup Instructions
 
-1. **Clone the repository** (if applicable)
+1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd Jaundice-Detector
+   cd Jaundice-Detector-2
    ```
 
-2. **Create a virtual environment**
+2. **Create a virtual environment** (recommended)
    ```bash
    python3.11 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -50,27 +50,12 @@ This project aims to build a machine learning model that can detect jaundice (ye
    pip install -r requirements.txt
    ```
 
-4. **Set up environment variables** (optional)
+4. **Run the application**
    ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
+   python run_app.py
    ```
-
-5. **Prepare and train the model**
-   ```bash
-   # Step 1: Manually place images in data/raw/ organized by class
-   # Structure should be:
-   #   data/raw/jaundice/  (images showing jaundice)
-   #   data/raw/normal/     (images without jaundice)
    
-   # Step 2: Split data into train/val/test sets
-   python scripts/split_data.py
-   
-   # Step 3: Train the model
-   python -m src.training.train
-   # Or use the script:
-   # ./scripts/train_local.sh
-   ```
+   The trained model is already included, so you can start using the UI immediately!
 
 ## Quick Start Workflow
 
@@ -99,21 +84,45 @@ This project aims to build a machine learning model that can detect jaundice (ye
 
 4. **Check results**: Trained models are saved in `models/` directory
 
-## Next Steps Checklist
-
-- [x] Data preprocessing pipeline (`src/data/`)
-- [x] Model architecture and training (`src/training/`)
-- [ ] Implement inference utilities (`src/inference/`)
-- [ ] Build Streamlit UI (`app/app.py`)
-- [ ] Test end-to-end workflow
-- [ ] Prepare demo presentation
-
 ## Running the Application
 
-Once implemented, run the Streamlit app:
+The Streamlit UI is ready to use! Run it with:
+
+```bash
+python run_app.py
+```
+
+Or directly:
 ```bash
 streamlit run app/app.py
 ```
+
+The app will open in your browser where you can upload images and get jaundice predictions.
+
+**Note:** The trained model (`models/best_model.pth`) is included in the repository, so you can run the UI immediately without training.
+
+## Training Your Own Model
+
+If you want to retrain the model with your own data:
+
+1. **Place your images** in `data/raw/`:
+   ```
+   data/raw/
+   ├── jaundice/  (images showing jaundice)
+   └── normal/    (images without jaundice)
+   ```
+
+2. **Split the data**:
+   ```bash
+   python scripts/split_data.py
+   ```
+
+3. **Train the model**:
+   ```bash
+   python train.py
+   ```
+
+See `TRAINING_GUIDE.md` for detailed training instructions.
 
 ## Configuration
 
