@@ -45,13 +45,15 @@ ENV/
 .env.local
 
 # Data files (raw data should not be committed)
-# Ignore all files in data/raw/ but keep folder structure
-data/raw/**
+# Ignore data/raw/ except jaundice/ and normal/ and their image files
+data/raw/*
 !data/raw/.gitkeep
-!data/raw/jaundice/
-!data/raw/jaundice/**
-!data/raw/normal/
-!data/raw/normal/**
+!data/raw/jaundice
+data/raw/jaundice/*
+!data/raw/jaundice/*
+!data/raw/normal
+data/raw/normal/*
+!data/raw/normal/*
 !data/raw/*/.gitkeep
 
 # Ignore all files in data/processed/ but keep folder structure
