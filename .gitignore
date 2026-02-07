@@ -45,9 +45,15 @@ ENV/
 .env.local
 
 # Data files (raw data should not be committed)
-data/raw/*
+# Ignore all files in data/raw/ but keep folder structure
+data/raw/**
 !data/raw/.gitkeep
-data/processed/*
+!data/raw/jaundice/
+!data/raw/normal/
+!data/raw/*/.gitkeep
+
+# Ignore all files in data/processed/ but keep folder structure
+data/processed/**
 !data/processed/.gitkeep
 
 # Model files (large files, commit selectively)
