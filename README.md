@@ -50,12 +50,21 @@ This project aims to build a machine learning model that can detect jaundice (ye
    pip install -r requirements.txt
    ```
 
-4. **Run the application**
+4. **Train the model** (required - model files are too large for GitHub)
+   ```bash
+   # First, split your data (if you have images in data/raw/)
+   python scripts/split_data.py
+   
+   # Then train the model
+   python train.py
+   ```
+   
+   **Note:** If you don't have training data, you'll need to add images to `data/raw/jaundice/` and `data/raw/normal/` first.
+
+5. **Run the application**
    ```bash
    python run_app.py
    ```
-   
-   The trained model is already included, so you can start using the UI immediately!
 
 ## Quick Start Workflow
 

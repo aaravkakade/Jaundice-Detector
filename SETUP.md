@@ -13,19 +13,30 @@
    pip install -r requirements.txt
    ```
 
-3. **Run the UI**
+3. **Train the model** (required)
+   ```bash
+   # If you have images in data/raw/, split them first:
+   python scripts/split_data.py
+   
+   # Then train:
+   python train.py
+   ```
+   
+   **Note:** You need training images in `data/raw/jaundice/` and `data/raw/normal/` directories.
+
+4. **Run the UI**
    ```bash
    python run_app.py
    ```
 
-That's it! The trained model is included, so you can start using the jaundice detection UI immediately.
-
 ## What's Included
 
-- ✅ Trained model (`models/best_model.pth`) - Ready to use
 - ✅ Complete Streamlit UI (`app/app.py`)
 - ✅ Inference module (`src/inference/predictor.py`)
+- ✅ Training scripts and utilities
 - ✅ All source code and configuration files
+
+**Note:** Model files are not included (too large for GitHub). You'll need to train the model first.
 
 ## Requirements
 
@@ -43,7 +54,9 @@ pip install -r requirements.txt
 ```
 
 **"Model not found" error:**
-- The model should be included in the repo. If missing, you'll need to train it first (see `TRAINING_GUIDE.md`)
+- You need to train the model first: `python train.py`
+- Make sure you have images in `data/raw/jaundice/` and `data/raw/normal/`
+- See `TRAINING_GUIDE.md` for detailed instructions
 
 **Streamlit compatibility issues:**
 - Make sure you have Streamlit installed: `pip install streamlit`
